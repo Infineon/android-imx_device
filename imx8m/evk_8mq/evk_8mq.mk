@@ -327,6 +327,12 @@ PRODUCT_COPY_FILES += \
     $(CONFIG_REPO_PATH)/common/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
     $(CONFIG_REPO_PATH)/common/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf
 
+
+PRODUCT_PACKAGES += wpa_cli hostapd_cli wlarm_android dhdarm_android
+PRODUCT_PACKAGES += wpa_supplicant hostapd wpa_supplicant.conf
+
+PRODUCT_PACKAGES += wl iperf3 dhdutil
+
 # WiFi HAL
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service \
@@ -470,6 +476,12 @@ PRODUCT_COPY_FILES += \
 # Set CCodec property in default
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.stagefright.ccodec_delayed_params=true
+
+PRODUCT_PROPERTY_OVERRIDES += wifi.interface=wlan0 \
+	                              ro.vendor.wifi.sap.interface=wlan1 \
+	                              ro.boot.wificountrycode=US \
+	                              wifi.direct.interface=p2p-dev-wlan0 \
+	                              wifi.supplicant_scan_interval=15
 
 # trusty loadable apps
 PRODUCT_COPY_FILES += \
