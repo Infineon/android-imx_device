@@ -103,7 +103,7 @@ DEVICE_MATRIX_FILE := $(IMX_DEVICE_PATH)/compatibility_matrix.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := $(IMX_DEVICE_PATH)/device_framework_matrix.xml
 
 # -------@block_wifi-------
-BOARD_WLAN_DEVICE            := nxp
+BOARD_WLAN_DEVICE            := bcmdhd
 WPA_SUPPLICANT_VERSION       := VER_0_8_X
 BOARD_WPA_SUPPLICANT_DRIVER  := NL80211
 BOARD_HOSTAPD_DRIVER         := NL80211
@@ -111,6 +111,15 @@ BOARD_HOSTAPD_PRIVATE_LIB           := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB    := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
 
 WIFI_HIDL_FEATURE_DUAL_INTERFACE := true
+
+WIFI_HAL_INTERFACE_COMBINATIONS := {{{STA}, 1}, {{AP, P2P}, 1}}, {{{AP}, 2}}
+WIFI_DRIVER_MODULE_NAME := bcmdhd
+WIFI_DRIVER_MODULE_PATH := /vendor/lib/modules/bcmdhd.ko
+WIFI_DRIVER_MODULE_ARG := "firmware_path=config_sdio_release_extsae.trx nvram_path=nvram.txt clm_path=55560a1.clm_blob sd_txglom=1 sd_uhsimode=3 dhd_msg_level=0x400001 dhd_console_ms=2 dhd_watchdog_ms=100"
+
+# PRODUCT_COPY_FILES directives.
+BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
+
 
 # -------@block_bluetooth-------
 # NXP 8997 BT
@@ -156,7 +165,7 @@ ifeq ($(TARGET_USE_DYNAMIC_PARTITIONS),true)
   else
     ifeq ($(IMX8MQ_USES_GKI),true)
       # imx8mq gki with HDMI display
-      TARGET_BOARD_DTS_CONFIG ?= imx8mq:imx8mq-evk-pcie1-m2-gki.dtb
+      TARGET_BOARD_DTS_CONFIG ?= imx8mq:imx8mq-evk-usdhc2-m2.dtb
       # imx8mq with MIPI-HDMI display
       TARGET_BOARD_DTS_CONFIG += imx8mq-mipi:imx8mq-evk-lcdif-adv7535-gki.dtb
       # imx8mq with HDMI and MIPI-HDMI display
@@ -167,7 +176,9 @@ ifeq ($(TARGET_USE_DYNAMIC_PARTITIONS),true)
       TARGET_BOARD_DTS_CONFIG += imx8mq-mipi-panel-rm67191:imx8mq-evk-dcss-rm67191-gki.dtb
     else
       # imx8mq with HDMI display
-      TARGET_BOARD_DTS_CONFIG ?= imx8mq:imx8mq-evk-pcie1-m2.dtb
+      #TARGET_BOARD_DTS_CONFIG ?= imx8mq:imx8mq-evk-usdhc2-m2.dtb
+      #TARGET_BOARD_DTS_CONFIG ?= imx8mq:imx8mq-evk-pcie1-m2.dtb
+      TARGET_BOARD_DTS_CONFIG ?= imx8mq:imx8mq-evk-dhd-usdhc-m2.dtb
       # imx8mq with MIPI-HDMI display
       TARGET_BOARD_DTS_CONFIG += imx8mq-mipi:imx8mq-evk-lcdif-adv7535.dtb
       # imx8mq with HDMI and MIPI-HDMI display
