@@ -2,7 +2,7 @@
 
 KERNEL_NAME := Image.lz4
 TARGET_KERNEL_ARCH := arm64
-IMX8MQ_USES_GKI := false
+IMX8MQ_USES_GKI := true
 
 #NXP 8997 wifi driver module
 #BOARD_VENDOR_KERNEL_MODULES += \

@@ -165,7 +165,8 @@ ifeq ($(TARGET_USE_DYNAMIC_PARTITIONS),true)
   else
     ifeq ($(IMX8MQ_USES_GKI),true)
       # imx8mq gki with HDMI display
-      TARGET_BOARD_DTS_CONFIG ?= imx8mq:imx8mq-evk-usdhc2-m2.dtb
+      #TARGET_BOARD_DTS_CONFIG ?= imx8mq:imx8mq-evk-usdhc2-m2.dtb
+      TARGET_BOARD_DTS_CONFIG ?= imx8mq:imx8mq-evk-dhd-usdhc-m2.dtb
       # imx8mq with MIPI-HDMI display
       TARGET_BOARD_DTS_CONFIG += imx8mq-mipi:imx8mq-evk-lcdif-adv7535-gki.dtb
       # imx8mq with HDMI and MIPI-HDMI display
