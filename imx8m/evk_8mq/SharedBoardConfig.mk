@@ -32,7 +32,7 @@ IMX8MQ_USES_GKI := true
 # CONFIG_AT803X_PHY: ethernet phy driver at803x.ko
 # CONFIG_FEC: fec.ko which depend on pps_core.ko and ptp.ko
 
-ifeq ($(IMX8MQ_USES_GKI),true)
+ifeq ($(IMX8MQ_USES_GKI),false)
 BOARD_VENDOR_KERNEL_MODULES += \
     $(KERNEL_OUT)/drivers/mxc/gpu-viv/galcore.ko \
     $(KERNEL_OUT)/drivers/thermal/qoriq_thermal.ko \
