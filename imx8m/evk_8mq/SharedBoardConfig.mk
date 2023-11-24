@@ -99,7 +99,7 @@ endif
 # CONFIG_CFG80211: cfg80211.ko, cfg80211 - wireless configuration API
 # CONFIG_MAC80211: mac80211.ko, Generic IEEE 802.11 Networking Stack
 
-ifeq ($(IMX8MQ_USES_GKI),true)
+ifeq ($(IMX8MQ_USES_GKI),false)
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
     $(KERNEL_OUT)/mm/zsmalloc.ko \
     $(KERNEL_OUT)/drivers/block/zram/zram.ko \
